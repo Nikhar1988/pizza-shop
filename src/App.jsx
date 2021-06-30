@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { Header, Categories } from './components';
 import './scss/app.scss';
 
 
 function App() {
 
-  const [category, setCategory] = useState(0);
+  
 
-  const changePizzaCategories =(id) => {
-    
-  }
+ 
 
   return (
     <>
@@ -19,8 +17,7 @@ function App() {
       <div className="content">
         <div className="container">
           <Categories  
-          items={['Все','Мясные', 'Вегетарианская','Гриль','Острые','Закрытые']}
-          changePizzaCategories = {(id) => setCategory(id)}/>
+          items={['Все','Мясные', 'Вегетарианская','Гриль','Острые','Закрытые']}/>
           <h2 className="content__title">Все пиццы</h2>
           <div className="content__items">
             <div className="pizza-block">

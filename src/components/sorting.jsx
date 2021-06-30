@@ -1,7 +1,26 @@
-import React from 'react';
+import React, {useState} from 'react';
 
-const Sorting = () => {
-    return (
+const Sorting = ({sortingOptions}) => {
+    
+  const [viewPopup, setViewPopup] = useState(false);
+  const [activeItem, setActiveItem] = useState(0);
+
+  const choiseActiveItem =(index)=> {
+    setActiveItem(index);
+  }
+  const toggleViewPopup = () => {
+    setViewPopup(!viewPopup);
+  }
+
+  const sortList = sortingOptions.map((item,index) => {
+     return <li className={ activeItem === index ? "active" : ""}
+                key = {item}
+                onClick={()=>choiseActiveItem(index)}
+            >{item}</li>
+  })
+  
+
+  return (
         <div className="sort">
               <div className="sort__label">
                 <svg
@@ -17,15 +36,13 @@ const Sorting = () => {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span>популярности</span>
+                <span onClick={toggleViewPopup}>{sortingOptions[activeItem]}</span>
               </div>
-              <div className="sort__popup">
+              {viewPopup && <div className="sort__popup">
                 <ul>
-                  <li className="active">популярности</li>
-                  <li>цене</li>
-                  <li>алфавиту</li>
+                  {sortList}
                 </ul>
-              </div>
+              </div>}
             </div>
     )
 }

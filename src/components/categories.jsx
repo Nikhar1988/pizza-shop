@@ -1,11 +1,20 @@
-import React from  'react';
+import React, {useState} from  'react';
 import Sorting from './sorting';
 
 
 
-const Categories =({items, changePizzaCategories}) => {
+const Categories =({items}) => {
 
-    const listPizza = items.map((item,id) => <li key ={item} onClick={() => changePizzaCategories(id)}>{item}</li> )
+const [category, setCategory] = useState(0);
+
+
+const changePizzaCategories = (index) => {
+  setCategory(index);
+}
+
+    const listPizza = items && items.map((item, index) => <li key ={item} 
+    onClick={() => changePizzaCategories(index)}
+    className={category === index ? 'active' : ''}>{item}</li> )
     return (
         <div className="content__top">
             <div className="categories">
@@ -13,7 +22,7 @@ const Categories =({items, changePizzaCategories}) => {
                 {listPizza}
               </ul>
             </div>
-                <Sorting/>
+                <Sorting sortingOptions={['популярноси', 'цене', 'алфавиту' ]}/>
         </div>
         
     )
