@@ -3,9 +3,9 @@ import {Link} from 'react-router-dom';
 
 const BasketButton = () => {
     return (
-      <Link to='/cart'>
+      <Link to="/cart">
           <div className="header__cart">
-              <a href="/cart.html" className="button button--cart">
+              <div  className="button button--cart">
                 <span>520 ₽</span>
                 <div className="button__delimiter"></div>
                 <svg
@@ -38,7 +38,7 @@ const BasketButton = () => {
                   />
                 </svg>
                 <span>3</span>
-              </a>
+              </div>
             </div>
       </Link>
         
