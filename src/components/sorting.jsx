@@ -1,13 +1,27 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 
 const Sorting = ({sortingOptions}) => {
     
   const [viewPopup, setViewPopup] = useState(false);
   const [activeItem, setActiveItem] = useState(0);
+  const sortRef = useRef();
+
+
+  const catchClick = (e) => {
+    if (!e.path.includes(sortRef.current)) {
+      setViewPopup(false);
+    }
+  }
+
+  useEffect(()=>{
+    document.body.addEventListener('click', catchClick);
+  }, [])
 
   const choiseActiveItem =(index)=> {
     setActiveItem(index);
+    toggleViewPopup();
   }
+  
   const toggleViewPopup = () => {
     setViewPopup(!viewPopup);
   }
@@ -21,7 +35,7 @@ const Sorting = ({sortingOptions}) => {
   
 
   return (
-        <div className="sort">
+        <div ref={sortRef} className="sort">
               <div className="sort__label">
                 <svg
                   width="10"
