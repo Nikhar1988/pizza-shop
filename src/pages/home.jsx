@@ -11,9 +11,9 @@ export default function Home({items}) {
             items={['Все','Мясные', 'Вегетарианская','Гриль','Острые','Закрытые']}/>
             <h2 className="content__title">Все пиццы</h2>
             <div className="content__items">
-                {items.map((item) => <ChoisePizzaBlock key={item.id} item={...item}/>)}                
+                {items && items.map((item) => <ChoisePizzaBlock key={item.id} {...item} />)}                
             </div>
             </div>
         </div>
     )
-}
+};

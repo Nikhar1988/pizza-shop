@@ -2,17 +2,17 @@ import React, {useState} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
- const ChoisePizzaBlock = ({item}) => {
-    const {id, imageUrl, name, price, types, sizes} = item;
+ const ChoisePizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
+    
     const [indexSize, setIndexSize]= useState(0);
     const [indexFormPizza, setIndexFormPizza]= useState(types[0]);
     const formPizza =['тонкое','традиционное'];
     const sizePizza =[26,30,40]; 
-    console.log(item.sizes);
+    console.log(sizes);
     const choiseSizePizzas = (index) => {
         setIndexSize(index);
     }
-    item.types.includes(0) ? console.log('hi') : console.log('go')
+    types.includes(0) ? console.log('hi') : console.log('go')
     const choiseFormPizza = (index) => {
         setIndexFormPizza(index);
     }
@@ -72,7 +72,6 @@ import PropTypes from 'prop-types';
     )
 }
 
-console.log(PropTypes)
 ChoisePizzaBlock.propTypes = {
     name:PropTypes.string.isRequired,
     imageUrl:PropTypes.string.isRequired,
@@ -80,5 +79,13 @@ ChoisePizzaBlock.propTypes = {
     types:PropTypes.arrayOf(PropTypes.number).isRequired,
     sizes:PropTypes.arrayOf(PropTypes.number).isRequired
 };
+
+
+ChoisePizzaBlock.defaultProps = {
+        name: '---',
+        price: 0,
+        types:[],
+        sizes:[]
+}
 
 export default ChoisePizzaBlock;
