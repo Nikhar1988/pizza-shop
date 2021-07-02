@@ -13,10 +13,6 @@ const [ pizzas, setPizzas] = useState();
 useEffect(() => {
   getResource().then(json => setPizzas(json.pizzas))
 },[]);
-  
-
-console.log(pizzas)
-
 
   return (
     <>
@@ -28,8 +24,7 @@ console.log(pizzas)
       </div>
     </div>
     </>
-    
-    
+     
   );
 }
 
