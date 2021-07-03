@@ -27,10 +27,11 @@ const Sorting = ({sortingOptions}) => {
   }
 
   const sortList = sortingOptions.map((item,index) => {
+      console.log(item, index)
      return <li className={ activeItem === index ? "active" : ""}
-                key = {item}
+                key = {item.name}
                 onClick={()=>choiseActiveItem(index)}
-            >{item}</li>
+            >{item.name}</li>
   })
   
 
@@ -50,7 +51,7 @@ const Sorting = ({sortingOptions}) => {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={toggleViewPopup}>{sortingOptions[activeItem]}</span>
+                <span onClick={toggleViewPopup}>{sortingOptions[activeItem].name}</span>
               </div>
               {viewPopup && <div className="sort__popup">
                 <ul>

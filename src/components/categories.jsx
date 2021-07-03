@@ -22,7 +22,10 @@ const changePizzaCategories = (index) => {
                 {listPizza}
               </ul>
             </div>
-                <Sorting sortingOptions={['популярноси', 'цене', 'алфавиту' ]}/>
+                <Sorting sortingOptions={[
+                  {name:'популярноси', type: 'popular'}, 
+                  {name:'цене', type: 'price'}, 
+                  {name:'алфавиту', type: 'alphabet'}]}/>
         </div>
         
     )

@@ -8,11 +8,10 @@ import PropTypes from 'prop-types';
     const [indexFormPizza, setIndexFormPizza]= useState(types[0]);
     const formPizza =['тонкое','традиционное'];
     const sizePizza =[26,30,40]; 
-    console.log(sizes);
     const choiseSizePizzas = (index) => {
         setIndexSize(index);
     }
-    types.includes(0) ? console.log('hi') : console.log('go')
+    
     const choiseFormPizza = (index) => {
         setIndexFormPizza(index);
     }
