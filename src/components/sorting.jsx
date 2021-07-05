@@ -27,7 +27,6 @@ const Sorting = ({sortingOptions}) => {
   }
 
   const sortList = sortingOptions.map((item,index) => {
-      console.log(item, index)
      return <li className={ activeItem === index ? "active" : ""}
                 key = {item.name}
                 onClick={()=>choiseActiveItem(index)}
