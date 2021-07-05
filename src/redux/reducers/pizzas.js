@@ -7,7 +7,8 @@ const pizzas = (state = initialState  , action) => {
     switch(action.type) {
         case 'SET_PIZZAS':
             return {
-                pizzas: action.payload
+                ...state,
+                items: action.payload
             }
         default:
             return state;
