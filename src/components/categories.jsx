@@ -1,20 +1,32 @@
 import React, {useState} from  'react';
 import Sorting from './sorting';
+import { setCategory } from '../redux/actions/filters';
+import { useDispatch } from 'react-redux';
+
+const Categories =({pizzaCategory}) => {
+
+const dispatch = useDispatch();
 
 
+const sortingOptions = [
+    {name:'популярноси', type: 'popular'}, 
+    {name:'цене', type: 'price'}, 
+    {name:'алфавиту', type: 'alphabet'}];
 
-const Categories =({items}) => {
 
-const [category, setCategory] = useState(0);
+const [category, setCategoryState] = useState(0);
 
 
 const changePizzaCategories = (index) => {
-  setCategory(index);
+  dispatch(setCategory(index));
+  setCategoryState(index);
+  
 }
 
-    const listPizza = items && items.map((item, index) => <li key ={item} 
-    onClick={() => changePizzaCategories(index)}
-    className={category === index ? 'active' : ''}>{item}</li> )
+    const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
+        key ={item} 
+        onClick={() => changePizzaCategories(index)}
+        className={category === index ? 'active' : ''}>{item}</li> )
     return (
         <div className="content__top">
             <div className="categories">
@@ -22,10 +34,7 @@ const changePizzaCategories = (index) => {
                 {listPizza}
               </ul>
             </div>
-                <Sorting sortingOptions={[
-                  {name:'популярноси', type: 'popular'}, 
-                  {name:'цене', type: 'price'}, 
-                  {name:'алфавиту', type: 'alphabet'}]}/>
+                <Sorting sortingOptions={sortingOptions}/>
         </div>
         
     )
