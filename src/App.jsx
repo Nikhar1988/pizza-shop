@@ -13,7 +13,13 @@ const App = () => {
   
   const dispatch = useDispatch();
 
-   useEffect(()=>{
+  window.test=()=>{
+    getResource().then(json => dispatch(setPizzas(json.pizzas)))
+  }
+
+
+
+  useEffect(()=>{
     getResource().then(json => dispatch(setPizzas(json.pizzas)));
   },[]);
     
@@ -22,8 +28,8 @@ const App = () => {
      <div className="wrapper">
         <Header/>
       <div className="content">
-        <Route path='/' component={Home} exact/>
-        <Route path='/cart' component={Cart} />
+        <Route path='/' component = {Home} exact/>
+        <Route path='/cart' component = {Cart}/>
       </div>
     </div>
     </>

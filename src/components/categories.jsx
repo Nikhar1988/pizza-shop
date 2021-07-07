@@ -1,27 +1,27 @@
-import React, {useState} from  'react';
+import React, {useState, memo} from  'react';
 import Sorting from './sorting';
 import { setCategory } from '../redux/actions/filters';
 import { useDispatch } from 'react-redux';
-
-const Categories =({pizzaCategory}) => {
-
-const dispatch = useDispatch();
-
 
 const sortingOptions = [
     {name:'популярноси', type: 'popular'}, 
     {name:'цене', type: 'price'}, 
     {name:'алфавиту', type: 'alphabet'}];
 
+const Categories = memo(({pizzaCategory}) => {
+
+const dispatch = useDispatch();
 
 const [category, setCategoryState] = useState(0);
 
-
 const changePizzaCategories = (index) => {
   dispatch(setCategory(index));
-  setCategoryState(index);
-  
+  setCategoryState(index);  
 }
+
+let poxzza = pizzaCategory
+console.log(poxzza===pizzaCategory)
+
 
     const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
         key ={item} 
@@ -38,6 +38,6 @@ const changePizzaCategories = (index) => {
         </div>
         
     )
-}
+})
 
 export default Categories;
