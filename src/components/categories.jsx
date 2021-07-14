@@ -19,8 +19,7 @@ const changePizzaCategories = (index) => {
   setCategoryState(index);  
 }
 
-let poxzza = pizzaCategory
-console.log(poxzza===pizzaCategory)
+
 
 
     const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 

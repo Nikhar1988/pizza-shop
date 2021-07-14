@@ -13,16 +13,12 @@ const App = () => {
   
   const dispatch = useDispatch();
 
-  window.test=()=>{
-    getResource().then(json => dispatch(setPizzas(json.pizzas)))
-  }
-
-
-
   useEffect(()=>{
-    getResource().then(json => dispatch(setPizzas(json.pizzas)));
+    getResource().then(json => dispatch(setPizzas(json)));
   },[]);
     
+
+
   return (
     <>
      <div className="wrapper">
