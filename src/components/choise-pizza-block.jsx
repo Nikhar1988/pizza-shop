@@ -4,12 +4,13 @@ import PropTypes from 'prop-types';
 
  const ChoisePizzaBlock = ({id, imageUrl, name, price, types, sizes}) => {
     
-    const [indexSize, setIndexSize]= useState(0);
+    const [sizePizza, setSizePizza]= useState(sizes[0]);
     const [indexFormPizza, setIndexFormPizza]= useState(types[0]);
     const formPizza =['тонкое','традиционное'];
-    const sizePizza =[26,30,40]; 
+    const sizePizzaData =[26, 30, 40]; 
+    
     const choiseSizePizzas = (index) => {
-        setIndexSize(index);
+        setSizePizza(index);
     }
     
     const choiseFormPizza = (index) => {
@@ -37,14 +38,14 @@ import PropTypes from 'prop-types';
                                 >{item}</li>)}
                             </ul>
                             <ul>
-                                {sizePizza.map((item,index) => 
+                                {sizePizzaData.map((item,index) => 
                                 <li 
                                     key={item}
                                     className={classNames({
-                                        active: indexSize === index,
+                                        active: sizePizza === item,
                                         disabled: !sizes.includes(item)
                                     })}
-                                    onClick = {() => choiseSizePizzas(index)}
+                                    onClick = {() => choiseSizePizzas(item)}
                                 >{item} см.</li>)}
                             </ul>
                         </div>

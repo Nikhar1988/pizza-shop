@@ -14,7 +14,7 @@ const App = () => {
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    getResource().then(json => dispatch(setPizzas(json)));
+    getResource().then(data => dispatch(setPizzas(data)));
   },[]);
     
 

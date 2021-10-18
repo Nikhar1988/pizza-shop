@@ -9,6 +9,7 @@ const pizzaCategory = ['Все','Мясные', 'Вегетарианская','
 export default function Home() {
 
 const items = useSelector(state => state.pizzas.items);
+console.log(items)
 
     return (
         <div>

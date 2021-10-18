@@ -10,33 +10,32 @@ const sortingOptions = [
 
 const Categories = memo(({pizzaCategory}) => {
 
-const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-const [category, setCategoryState] = useState(0);
+  const [category, setCategoryState] = useState(0);
 
-const changePizzaCategories = (index) => {
-  dispatch(setCategory(index));
-  setCategoryState(index);  
-}
+  const changePizzaCategories = (index) => {
+    dispatch(setCategory(index));
+    setCategoryState(index);  
+  }
 
-
-
-
-    const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
-        key ={item} 
-        onClick={() => changePizzaCategories(index)}
-        className={category === index ? 'active' : ''}>{item}</li> )
-    return (
-        <div className="content__top">
-            <div className="categories">
-              <ul>
-                {listPizza}
-              </ul>
-            </div>
-                <Sorting sortingOptions={sortingOptions}/>
-        </div>
-        
-    )
+  const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
+      key ={item} 
+      onClick={() => changePizzaCategories(index)}
+      className={category === index ? 'active' : ''}>{item}</li> )
+    
+    
+  return (
+      <div className="content__top">
+          <div className="categories">
+            <ul>
+              {listPizza}
+            </ul>
+          </div>
+              <Sorting sortingOptions={sortingOptions}/>
+      </div>
+      
+  )
 })
 
 export default Categories;
