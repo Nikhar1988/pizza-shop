@@ -1,11 +1,13 @@
 import React, {useState, useEffect, useRef} from 'react';
+import { useDispatch } from 'react-redux';
+import { setSortBy } from '../redux/actions/filters';
 
-const Sorting = ({sortingOptions}) => {
-    
+const Sorting = ({sortingOptions, sortType}) => {
+  const dispatch = useDispatch()  
   const [viewPopup, setViewPopup] = useState(false);
-  const [activeItem, setActiveItem] = useState(0);
+  const currentSortingType = sortingOptions.find(obj => obj.type === sortType)
+  
   const sortRef = useRef();
-
 
   const catchClick = (e) => {
     if (!e.path.includes(sortRef.current)) {
@@ -17,8 +19,8 @@ const Sorting = ({sortingOptions}) => {
     document.body.addEventListener('click', catchClick);
   }, [])
 
-  const choiseActiveItem =(index)=> {
-    setActiveItem(index);
+  const choiseActiveItem =(type)=> {
+    dispatch(setSortBy(type))
     toggleViewPopup();
   }
   
@@ -26,10 +28,10 @@ const Sorting = ({sortingOptions}) => {
     setViewPopup(!viewPopup);
   }
 
-  const sortList = sortingOptions.map((item,index) => {
-     return <li className={ activeItem === index ? "active" : ""}
+  const sortList = sortingOptions.map((item) => {
+     return <li className={ sortType === item.type ? "active" : ""}
                 key = {item.name}
-                onClick={()=>choiseActiveItem(index)}
+                onClick={()=>choiseActiveItem(item.type)}
             >{item.name}</li>
   })
   
@@ -50,7 +52,7 @@ const Sorting = ({sortingOptions}) => {
                   />
                 </svg>
                 <b>Сортировка по:</b>
-                <span onClick={toggleViewPopup}>{sortingOptions[activeItem].name}</span>
+                <span onClick={toggleViewPopup}>{currentSortingType.name}</span>
               </div>
               {viewPopup && <div className="sort__popup">
                 <ul>

@@ -1,4 +1,5 @@
 const getResource = async () => {
+    
     const res = await fetch('http://localhost:3001/pizzas');
 
     if (!res.ok) {
@@ -6,7 +7,9 @@ const getResource = async () => {
             `, received ${res.status}`)
     }
 
-    return await res.json();
+     const data = await res.json();
+     
+     return data;
 };
 
 export default getResource;

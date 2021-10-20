@@ -1,22 +1,21 @@
 import React, {useState, memo} from  'react';
 import Sorting from './sorting';
 import { setCategory } from '../redux/actions/filters';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchPizzas } from '../redux/actions/pizzas';
 
 const sortingOptions = [
-    {name:'популярноси', type: 'popular'}, 
-    {name:'цене', type: 'price'}, 
-    {name:'алфавиту', type: 'alphabet'}];
+    {name: 'популярноси', type: 'popular'}, 
+    {name: 'цене', type: 'price'}, 
+    {name: 'алфавиту', type: 'alphabet'}];
 
 const Categories = memo(({pizzaCategory}) => {
-
+  const {sortBy, category} = useSelector(state => state.filters );
   const dispatch = useDispatch();
-
-  const [category, setCategoryState] = useState(0);
 
   const changePizzaCategories = (index) => {
     dispatch(setCategory(index));
-    setCategoryState(index);  
+    dispatch(fetchPizzas()) 
   }
 
   const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
@@ -32,7 +31,7 @@ const Categories = memo(({pizzaCategory}) => {
               {listPizza}
             </ul>
           </div>
-              <Sorting sortingOptions={sortingOptions}/>
+              <Sorting sortingOptions={sortingOptions} sortType = {sortBy}/>
       </div>
       
   )
