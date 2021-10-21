@@ -4,7 +4,7 @@ import ChoisePizzaBlock from '../components/choise-pizza-block';
 import {useSelector} from 'react-redux';
 import Loader from '../components/Loader';
 
-const pizzaCategory = ['Все','Мясные', 'Вегетарианская','Гриль','Острые','Закрытые'];
+const pizzaCategory = ['Мясные', 'Вегетарианская','Гриль','Острые','Закрытые'];
 
 
 export default function Home() {

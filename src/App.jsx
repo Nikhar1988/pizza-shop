@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { Header} from './components';
 import { Home, Cart } from './pages';
 import {Route} from 'react-router-dom';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { fetchPizzas } from './redux/actions/pizzas';
 import './scss/app.scss';
 
@@ -10,11 +10,13 @@ import './scss/app.scss';
  
 const App = () => {
   
+  const {sortBy, category} = useSelector(state => state.filters );
+  
   const dispatch = useDispatch();
 
   useEffect(()=>{
-      dispatch(fetchPizzas())
-  },[]);
+      dispatch(fetchPizzas(category,sortBy))
+  },[sortBy, category]);
     
 
 

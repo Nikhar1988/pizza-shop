@@ -1,13 +1,13 @@
 import getResource from "../../services/pizza-service";
 
 
-export const fetchPizzas =  () => async (dispatch) => {
+export const fetchPizzas = (categoryy, sortBy) => async (dispatch) => {
     dispatch(setLoader(false))
-    const response = await getResource(); 
+    const response = await getResource(categoryy, sortBy);
 
     dispatch(setPizzas(response))
 
-} 
+}
 export const setLoader = (payload) => ({
     type: 'SET_LOADER',
     payload
@@ -18,4 +18,3 @@ export const setPizzas = (items) => ({
     payload: items
 });
 
- 

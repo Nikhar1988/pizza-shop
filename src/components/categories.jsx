@@ -3,6 +3,7 @@ import Sorting from './sorting';
 import { setCategory } from '../redux/actions/filters';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPizzas } from '../redux/actions/pizzas';
+import classNames from 'classnames';
 
 const sortingOptions = [
     {name: 'популярноси', type: 'popular'}, 
@@ -15,19 +16,27 @@ const Categories = memo(({pizzaCategory}) => {
 
   const changePizzaCategories = (index) => {
     dispatch(setCategory(index));
-    dispatch(fetchPizzas()) 
   }
 
   const listPizza = pizzaCategory && pizzaCategory.map((item, index) => <li 
       key ={item} 
       onClick={() => changePizzaCategories(index)}
-      className={category === index ? 'active' : ''}>{item}</li> )
+      className={classNames({
+        active: category === index 
+      })}>{item}</li> )
     
     
   return (
       <div className="content__top">
           <div className="categories">
             <ul>
+              <li  
+                  onClick={() => changePizzaCategories(null)}
+                  className={classNames({
+                    active: category === null 
+                  })}
+              >Все
+              </li>
               {listPizza}
             </ul>
           </div>
