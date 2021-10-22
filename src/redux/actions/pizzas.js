@@ -1,9 +1,9 @@
 import getResource from "../../services/pizza-service";
 
 
-export const fetchPizzas = (categoryy, sortBy) => async (dispatch) => {
+export const fetchPizzas = (category, sortBy) => async (dispatch) => {
     dispatch(setLoader(false))
-    const response = await getResource(categoryy, sortBy);
+    const response = await getResource(category, sortBy);
 
     dispatch(setPizzas(response))
 

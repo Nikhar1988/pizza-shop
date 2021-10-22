@@ -1,6 +1,6 @@
-const getResource = async (category, sortBy) => {
+const getResource = async (category, {type, order}) => {
 
-    const res = await fetch(`http://localhost:3001/pizzas?category=${category}`);
+    const res = await fetch(`http://localhost:3001/pizzas?${category === null ? '' : `category=${category}`}&_sort=${type}&_order=${order}`);
 
     if (!res.ok) {
         throw new Error(`Could not fetch` +

@@ -19,8 +19,8 @@ const Sorting = ({sortingOptions, sortType}) => {
     document.body.addEventListener('click', catchClick);
   }, [])
 
-  const choiseActiveItem =(type)=> {
-    dispatch(setSortBy(type))
+  const choiseActiveItem =(type, order)=> {
+    dispatch(setSortBy({type, order}))
     toggleViewPopup();
   }
   
@@ -31,7 +31,7 @@ const Sorting = ({sortingOptions, sortType}) => {
   const sortList = sortingOptions.map((item) => {
      return <li className={ sortType === item.type ? "active" : ""}
                 key = {item.name}
-                onClick={()=>choiseActiveItem(item.type)}
+                onClick={()=>choiseActiveItem(item.type, item.order)}
             >{item.name}</li>
   })
   

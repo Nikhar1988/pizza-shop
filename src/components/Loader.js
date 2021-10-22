@@ -2,7 +2,7 @@ import React from "react"
 import ContentLoader from "react-content-loader"
 
 const Loader = (props) => (
-  <ContentLoader 
+  <ContentLoader className="pizza-block"
     speed={2}
     width={280}
     height={457}
