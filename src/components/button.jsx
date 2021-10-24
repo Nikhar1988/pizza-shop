@@ -1,12 +1,14 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import {Link} from 'react-router-dom';
 
-const BasketButton = () => {
+const Button = () => {
+  const {totalCount, totalPrice} = useSelector(state => state.cart)
     return (
       <Link to="/cart">
           <div className="header__cart">
               <div  className="button button--cart">
-                <span>520 ₽</span>
+                <span>{totalPrice}₽</span>
                 <div className="button__delimiter"></div>
                 <svg
                   width="18"
@@ -37,7 +39,7 @@ const BasketButton = () => {
                     strokeinejoin="round"
                   />
                 </svg>
-                <span>3</span>
+                <span>{totalCount}</span>
               </div>
             </div>
       </Link>
@@ -45,4 +47,4 @@ const BasketButton = () => {
     )
 }
 
-export default BasketButton;
+export default Button;

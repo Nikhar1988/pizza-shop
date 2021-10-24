@@ -1,9 +1,11 @@
 import React from 'react';
-import BasketButton from './button';
+import Button from './Button';
 import logoPage from '../assets/img/pizza-logo.svg';
 import {Link} from 'react-router-dom';
 
 const Header =() => {
+    
+    
     return (
         <>
         <div className="header">
@@ -18,7 +20,7 @@ const Header =() => {
                     </div>
                 </Link>
                 
-                <BasketButton/>
+                <Button/>
             </div>
         </div>
         </>
