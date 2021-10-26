@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import classNames from 'classnames';
 import PropTypes from 'prop-types';
 
- const ChoisePizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza}) => {
+ const ChoisePizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza, addedCount}) => {
     
     const [sizePizza, setSizePizza]= useState(sizes[0]);
     const [indexFormPizza, setIndexFormPizza]= useState(types[0]);
@@ -15,6 +15,18 @@ import PropTypes from 'prop-types';
     
     const choiseFormPizza = (index) => {
         setIndexFormPizza(index);
+    }
+
+    const addPizza = () => {
+        const obj = {
+            id, 
+            imageUrl, 
+            name, 
+            price, 
+            type:formPizza[indexFormPizza], 
+            size:sizePizza 
+        }
+        onClickAddPizza(obj)
     }
 
     return (
@@ -51,7 +63,7 @@ import PropTypes from 'prop-types';
                         </div>
                         <div className="pizza-block__bottom">
                             <div className="pizza-block__price">от {price} ₽</div>
-                            <button onClick ={()=>onClickAddPizza({id, imageUrl, name, price, types, sizes})} className="button button--outline button--add">
+                            <button onClick ={addPizza} className="button button--outline button--add">
                                 <svg
                                     width="12"
                                     height="12"
@@ -65,20 +77,14 @@ import PropTypes from 'prop-types';
                                     />
                                 </svg>
                                 <span>Добавить</span>
-                                <i>2</i>
+                                {addedCount && <i>{addedCount}</i>}
                             </button>
                         </div>
                     </div>
     )
 }
 
-ChoisePizzaBlock.propTypes = {
-    name:PropTypes.string.isRequired,
-    imageUrl:PropTypes.string.isRequired,
-    price:PropTypes.number.isRequired,
-    types:PropTypes.arrayOf(PropTypes.number).isRequired,
-    sizes:PropTypes.arrayOf(PropTypes.number).isRequired
-};
+
 
 
 ChoisePizzaBlock.defaultProps = {

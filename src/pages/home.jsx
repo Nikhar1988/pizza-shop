@@ -10,10 +10,13 @@ const pizzaCategory = ['Мясные', 'Вегетарианская','Грил�
 
 export default function Home() {
 
-
 const dispatch = useDispatch()    
 const {items, isLoaded} = useSelector(state => state.pizzas );
-    
+const {cartItems} = useSelector(state => state.cart );
+const handleAddPizzaToCart = (obj) => {
+    dispatch(addPizzaToCart(obj))
+}
+ 
 return (
         <div>
             <div className="container">
@@ -21,8 +24,13 @@ return (
                     pizzaCategory={pizzaCategory}/>
                 <h2 className="content__title">Все пиццы</h2>
                 <div className="content__items">
-                    {isLoaded ? 
-                    items.map((item) => <ChoisePizzaBlock onClickAddPizza={(obj)=>dispatch(addPizzaToCart(obj))} key={item.id} {...item} />) 
+                    {isLoaded 
+                    ? items.map((item) => <ChoisePizzaBlock 
+                                                addedCount ={cartItems[item.id] && cartItems[item.id].length}    
+                                                onClickAddPizza={handleAddPizzaToCart} 
+                                                key={item.id} 
+                                                {...item}                                                    
+                                                />) 
                     : Array(12).fill(0).map((_, index) => <Loader key={index}/>)}                
                 </div>
             </div>
