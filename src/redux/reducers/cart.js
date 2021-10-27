@@ -34,24 +34,29 @@ const cart = (state = initialState, action) => {
                 totalCount: allPizzas.length,
                 totalPrice
             };
-        
-            case 'CLEAR_CART':
-                return {
-                    cartItems: {},
-                    totalCount: 0,
-                    totalPrice: 0
-                    
-                };
-            case 'REMOVE_ITEM':
+
+        case 'CLEAR_CART':
+            return {
+                cartItems: {},
+                totalCount: 0,
+                totalPrice: 0
+            };
+
+        case 'REMOVE_ITEM':
             const deliteItems = {
                 ...state.cartItems,
-            }    
+            }
             delete deliteItems[action.payload]
-            
+
+            const ItemsAfterDelete = Object.values(deliteItems).map(obj => obj.items);
+            const allPizzasAfterDelete = [].concat.apply([], ItemsAfterDelete);
+            const totalPriceAfterDelete = getTotalPrice(allPizzasAfterDelete)
+
             return {
-                    ...state,
-                    cartItems: deliteItems      
-                };    
+                totalCount: allPizzasAfterDelete.length,
+                totalPrice: totalPriceAfterDelete,
+                cartItems: deliteItems
+            };
 
 
         default:
