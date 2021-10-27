@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import classNames from 'classnames';
-import PropTypes from 'prop-types';
 
  const ChoisePizzaBlock = ({id, imageUrl, name, price, types, sizes, onClickAddPizza, addedCount}) => {
     

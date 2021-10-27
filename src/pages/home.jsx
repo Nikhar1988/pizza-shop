@@ -1,6 +1,6 @@
 import React from 'react';
 import { Categories } from '../components';
-import ChoisePizzaBlock from '../components/choise-pizza-block';
+import ChoisePizzaBlock from '../components/Choise-pizza-block';
 import {useDispatch, useSelector} from 'react-redux';
 import Loader from '../components/Loader';
 import { addPizzaToCart } from '../redux/actions/cart';

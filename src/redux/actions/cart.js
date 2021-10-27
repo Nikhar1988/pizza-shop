@@ -3,5 +3,14 @@ export const addPizzaToCart = (pizzaObj) => ({
     payload: pizzaObj
 });
 
+export const clearCart = () => ({
+    type: 'CLEAR_CART'  
+});
+
+
+export const removeItem = (id) => ({
+    type: 'REMOVE_ITEM',
+    payload: id  
+});
 
 

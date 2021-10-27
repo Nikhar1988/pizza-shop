@@ -1,5 +1,5 @@
 import React, {memo} from  'react';
-import Sorting from './sorting';
+import Sorting from './Sorting';
 import { setCategory } from '../redux/actions/filters';
 import { useDispatch, useSelector } from 'react-redux';
 import classNames from 'classnames';

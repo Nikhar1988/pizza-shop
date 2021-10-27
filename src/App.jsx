@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Header} from './components';
+import  {Header} from './components';
 import { Home, Cart } from './pages';
 import {Route} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';

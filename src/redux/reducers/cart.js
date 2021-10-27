@@ -34,6 +34,24 @@ const cart = (state = initialState, action) => {
                 totalCount: allPizzas.length,
                 totalPrice
             };
+        
+            case 'CLEAR_CART':
+                return {
+                    cartItems: {},
+                    totalCount: 0,
+                    totalPrice: 0
+                    
+                };
+            case 'REMOVE_ITEM':
+            const deliteItems = {
+                ...state.cartItems,
+            }    
+            delete deliteItems[action.payload]
+            
+            return {
+                    ...state,
+                    cartItems: deliteItems      
+                };    
 
 
         default:
